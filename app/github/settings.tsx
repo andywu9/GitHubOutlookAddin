@@ -6,7 +6,7 @@ export class Settings extends React.Component< any, any >{
 
 	public constructor(props: any) {
 		super(props);
-		this.state = { let isFirsttime: boolean = true, let repo: string = "" };
+		this.state = { let isFirsttime: boolean = true, repo: string = "" };
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -14,6 +14,8 @@ export class Settings extends React.Component< any, any >{
 	public handleChange(event) {
 		this.setState({isFirsttime: false});
 		this.setState({repo: event.target.value});
+		Office.context.roamingSettings.set("GitHub Repository", this.state.repo);
+		Office.context.roamingSettings.saveAsync();
 	}
 
 	public handleSubmit(event) : void {
