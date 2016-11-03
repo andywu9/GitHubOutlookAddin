@@ -2,17 +2,31 @@
 import * as React from 'react';
 import { Provider, connect } from 'react-redux';
 
-export class Settings extends React.Component< any, any >{
+interface IChangeRepositoryProps {
+	dispatch?: any;
+	firstTimeState?: boolean;
+	repo: string;
+}
 
-	public constructor(props: any) {
-		super(props);
-		this.state = { let isFirsttime: boolean = true, repo: string = "" };
+function mapStateToProps(state: any): IChangeRepositoryProps {
+	return ({
+	firstTimeState: state.controlState.firstTimeState,
+	});
+}
+
+@connect(mapStateToProps)
+
+export class Settings extends React.Component<IChangeRepositoryProps, {}> {
+
+	public constructor() {
+		super();
+		this.state = { let isFirstTime: boolean = true, repo: string = "" };
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	public handleChange(event) {
-		this.setState({isFirsttime: false});
+		this.setState({isFirstTime: false});
 		this.setState({repo: event.target.value});
 		Office.context.roamingSettings.set("GitHub Repository", this.state.repo);
 		Office.context.roamingSettings.saveAsync();

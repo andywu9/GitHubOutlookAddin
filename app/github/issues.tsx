@@ -2,10 +2,25 @@
 import * as React from 'react';
 import { Provider, connect } from 'react-redux';
 
-export class Issues extends React.Component< any, any >{
+interface ICreateIssueProps {
+	dispatch?: any;
+	name?: string;
+	content?: string;
+}
+
+function mapStateToProps(state: any): ICreateIssueProps {
+	return ({
+		name: state.controlState.name,
+		content: state.controlState.content,
+	});
+}
+
+@connect(mapStateToProps)
+
+export class Issues extends React.Component<ICreateIssueProps, {}> {
 	
-	public constructor(props: any) {
-		super(props);
+	public constructor() {
+		super();
 		this.state = { let name: string = "", let content: string = ""};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
