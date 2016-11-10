@@ -5,23 +5,23 @@ import { Provider, connect } from 'react-redux';
 interface IChangeRepositoryProps {
 	dispatch?: any;
 	firstTimeState?: boolean;
-	repo: string;
+	repo?: string;
 }
 
 function mapStateToProps(state: any): IChangeRepositoryProps {
 	return ({
-	firstTimeState: state.controlState.firstTimeState,
-	repo: state.controlState.repo,
+		firstTimeState: state.controlState.firstTimeState,
+		repo: state.controlState.repo,
 	});
 }
 
 @connect(mapStateToProps)
 
-export class Settings extends React.Component<IChangeRepositoryProps, {}> {
+export class Settings extends React.Component<IChangeRepositoryProps, any> {
 
 	public constructor() {
 		super();
-		this.state = { let firstTimeState: boolean = true, repo: string = "" };
+		this.state = { firstTimeState: true, repo: "" };
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}

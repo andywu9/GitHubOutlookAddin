@@ -17,11 +17,11 @@ function mapStateToProps(state: any): ICreateIssueProps {
 
 @connect(mapStateToProps)
 
-export class Issues extends React.Component<ICreateIssueProps, {}> {
-	
+export class Issues extends React.Component<ICreateIssueProps, any> {
+
 	public constructor() {
 		super();
-		this.state = { let name: string = "", let content: string = ""};
+		this.state = { name: "", content: "" };
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
