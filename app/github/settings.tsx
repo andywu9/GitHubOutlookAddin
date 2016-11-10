@@ -39,8 +39,10 @@ export class Settings extends React.Component<IChangeRepositoryProps, any> {
 
 	public render(): React.ReactElement<Provider> {
 		return (
-			<input type="text" placeholder="Enter in the link to the Github repository." repo={this.state.repo} onChange={this.handleChange} />
+			<div>
+				<input type="text" placeholder="Enter in the link to the Github repository." repo={this.state.repo} onChange={this.handleChange} />
 				<button onClick={this.handleSubmit}>Change repository</button>
+			</div>
 		);
 	}
 }
