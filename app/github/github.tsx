@@ -4,6 +4,7 @@ import { Provider, connect } from 'react-redux';
 import { Authenticate } from '../authenticate/authenticate';
 import { Loading } from '../authenticate/loading';
 import { AuthState, updateAuthAction, IErrorStateAction } from '../actions/flowActions';
+import { Issues } from './issues';
 
 /**
  * Properties needed for the main GitHub component
@@ -63,7 +64,7 @@ export class GitHub extends React.Component<IGitHubProps, any> {
   }
 
   /**
-   * Executed after Office.initialize is complete. 
+   * Executed after Office.initialize is complete.
    * Initial check for user authentication token and determines correct first page to show
    */
   public initialize(): void {
@@ -95,7 +96,7 @@ export class GitHub extends React.Component<IGitHubProps, any> {
         body = (<Loading />);
         break;
       case AuthState.Authorized:
-        body = (<div>GitHub</div>);
+        body = (<div>Issues</div>);
         break;
       default:
        body = (<Authenticate />);
