@@ -38,8 +38,17 @@ export class Issues extends React.Component<ICreateIssueProps, any> {
 	public render(): React.ReactElement<Provider> {
 		return (
 			<div>
-				<input type="text" placeholder="Enter in contents of the issue." name={this.state.name} content={this.state.content} onChange={this.handleChange} />
+				<div>
+					<h2>Name of the issue</h2>
+					<input type="text" placeholder="Enter the name of the issue." name={this.state.name} content={this.state.content} onChange={this.handleChange} />
+				</div>
+				<div> 
+					<h2>Contents of the issue</h2>
+					<input type="text" placeholder="Enter in contents of the issue." name={this.state.name} content={this.state.content} onChange={this.handleChange} />
+				</div>
 				<button onClick={this.handleSubmit}>Create Issue</button>
+				<h3>{this.state.name}</h3>
+				<h2>{this.state.content}</h2>
 			</div>
 		);
 	}
