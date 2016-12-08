@@ -1,6 +1,7 @@
 /// <reference path="../../office.d.ts" />
 import * as React from 'react';
 import { Provider, connect } from 'react-redux';
+import * as UIFabric from 'office-ui-fabric-react';
 
 interface IChangeRepositoryProps {
 	dispatch?: any;
@@ -29,19 +30,21 @@ export class Settings extends React.Component<IChangeRepositoryProps, any> {
 	public handleChange(event) {
 		this.setState({firstTimeState: false});
 		this.setState({repo: event.target.value});
-		Office.context.roamingSettings.set("GitHub Repository", this.state.repo);
-		Office.context.roamingSettings.saveAsync();
+		console.log(this.state.repo);
 	}
 
 	public handleSubmit(event) : void {
-		alert("Changed repository!");
+		Office.context.roamingSettings.set("GitHub Repository", this.state.repo);
+		Office.context.roamingSettings.saveAsync();
 	}
 
 	public render(): React.ReactElement<Provider> {
 		return (
 			<div>
-				<input type="text" placeholder="Enter in the link to the Github repository." repo={this.state.repo} onChange={this.handleChange} />
-				<button onClick={this.handleSubmit}>Change repository</button>
+				<UIFabric.TextField label='Github Repository' onChanged={ this.handleChange } />
+				<div>
+					<UIFabric.Button onClick={this.handleSubmit}>Change repository</UIFabric.Button>
+				</div>
 			</div>
 		);
 	}
