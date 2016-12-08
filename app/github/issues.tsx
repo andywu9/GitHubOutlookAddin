@@ -81,7 +81,7 @@ export class Issues extends React.Component<ICreateIssueProps, any> {
 				<div>
 					<UIFabric.TextField label='Contents of the issue' multiline onChanged={ this.handleChangeContent } />
 				</div>
-				<button onClick={this.handleSubmit}>Create Issue</button>
+				<UIFabric.Button onClick={this.handleSubmit}>Create Issue</UIFabric.Button>
 				<h3>{this.state.name}</h3>
 				<h2>{this.state.content}</h2>
 			</div>
