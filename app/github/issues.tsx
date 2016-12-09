@@ -4,7 +4,6 @@ import { Provider, connect } from 'react-redux';
 import * as UIFabric from 'office-ui-fabric-react';
 
 interface ICreateIssueProps {
-	dispatch?: any;
 	name?: string;
 	content?: string;
 }
@@ -28,16 +27,20 @@ export class Issues extends React.Component<ICreateIssueProps, any> {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	public handleChangeName(event) {
-		this.setState({name: event.target.value});
+	public handleChangeName(text) {
+		this.setState({name: text});
+		console.log(this.state.name);
 	}
 
-	public handleChangeContent(event) {
-		this.setState({content: event.target.value});
+	public handleChangeContent(text) {
+		this.setState({content: text});
+		console.log(this.state.content);
 	}
 
 	public handleSubmit(event) : void {
-		var myRepo = Office.context.roamingSettings.get("GitHub Repository");
+		/*
+		//var myRepo = Office.context.roamingSettings.get("GitHub Repository");
+		var myRepo = "https://github.com/andywu9/GitHubOutlookAddin";
 		var repoArr = myRepo.split('/');
 		var owner = repoArr[3];
 		var repo = repoArr[4];
@@ -70,6 +73,8 @@ export class Issues extends React.Component<ICreateIssueProps, any> {
 		//This is the data we are posting, it needs to be a string or a buffer
 		req.write(data);
 		req.end();
+		*/
+		console.log("Create Issue button works.");
 	}
 
 	public render(): React.ReactElement<Provider> {
@@ -81,9 +86,7 @@ export class Issues extends React.Component<ICreateIssueProps, any> {
 				<div>
 					<UIFabric.TextField label='Contents of the issue' multiline onChanged={ this.handleChangeContent } />
 				</div>
-				<UIFabric.Button onClick={this.handleSubmit}>Create Issue</UIFabric.Button>
-				<h3>{this.state.name}</h3>
-				<h2>{this.state.content}</h2>
+				<UIFabric.Button  onClick={this.handleSubmit}>Create Issue</UIFabric.Button>
 			</div>
 		);
 	}
