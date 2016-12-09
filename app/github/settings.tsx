@@ -25,8 +25,9 @@ export class Settings extends React.Component<IChangeRepositoryProps, any> {
 	}
 
 	public handleChange(text) {
+		console.log("Previous repo: " + this.state.repo);
 		this.setState({repo: text});
-		console.log(this.state.repo);
+		console.log("New repo: " + this.state.repo);
 	}
 
 	public handleSubmit(event) : void {
@@ -34,7 +35,7 @@ export class Settings extends React.Component<IChangeRepositoryProps, any> {
 		//Office.context.roamingSettings.saveAsync();
 		//var myRepo = Office.context.roamingSettings.get("GitHub Repository");
 		//console.log("This is my saved repo: " + myRepo);
-		console.log("Changed repo");
+		console.log("Clicked change repo to: " + this.state.repo);
 	}
 
 	public render(): React.ReactElement<Provider> {

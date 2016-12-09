@@ -74,7 +74,7 @@ export class Issues extends React.Component<ICreateIssueProps, any> {
 		req.write(data);
 		req.end();
 		*/
-		console.log("Create Issue button works.");
+		console.log("Create Issue button has been clicked.");
 	}
 
 	public render(): React.ReactElement<Provider> {
