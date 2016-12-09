@@ -22,3 +22,7 @@ declare module 'office' {
   export = out;
 }
 
+declare module 'office-ui-fabric-react' {
+  var out: any;
+  export = out;
+}
