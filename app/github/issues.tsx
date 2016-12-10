@@ -3,11 +3,19 @@ import * as React from 'react';
 import { Provider, connect } from 'react-redux';
 import * as UIFabric from 'office-ui-fabric-react';
 
+/**
+ *  Properties needed for the Issues component
+ *  @interface ICreateIssue Props
+ */
 interface ICreateIssueProps {
 	name?: string;
 	content?: string;
 }
 
+/**
+ * maps state in application store to properties for the component
+ * @param {any} state
+ */
 function mapStateToProps(state: any): ICreateIssueProps {
 	return ({
 		name: state.controlState.name,
@@ -27,20 +35,28 @@ export class Issues extends React.Component<ICreateIssueProps, any> {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	/**
+	 * updates the state to reflect changes in the "Name of the Issue" TextField
+	 */
 	public handleChangeName(text) {
 		this.setState({name: text});
 		console.log(this.state.name);
 	}
 
+	/**
+	 * updates the state to reflect changes in the "Contents of the Issue" TextField
+	 */
 	public handleChangeContent(text) {
 		this.setState({content: text});
 		console.log(this.state.content);
 	}
 
+	/**
+	 * makes the API call to create the GithHub issue when the "Create Issue" button is clicked
+	 */
 	public handleSubmit(event) : void {
 		/*
-		//var myRepo = Office.context.roamingSettings.get("GitHub Repository");
-		var myRepo = "https://github.com/andywu9/GitHubOutlookAddin";
+		var myRepo = Office.context.roamingSettings.get("GitHub Repository");
 		var repoArr = myRepo.split('/');
 		var owner = repoArr[3];
 		var repo = repoArr[4];
@@ -77,6 +93,9 @@ export class Issues extends React.Component<ICreateIssueProps, any> {
 		console.log("Create Issue button has been clicked.");
 	}
 
+	/**
+	 * Renders the form
+	 */
 	public render(): React.ReactElement<Provider> {
 		return (
 			<div>
